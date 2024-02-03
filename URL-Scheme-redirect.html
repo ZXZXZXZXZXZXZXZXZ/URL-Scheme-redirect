@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        window.onload = function() {
+            var scheme = getParameterByName('scheme');
+            if (scheme) {
+                window.location.href = scheme;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>如果未自动打开应用，<a href="javascript:void(0);" onclick="window.location.href = getParameterByName('scheme')">请点击这里</a>.</p>
+</body>
+</html>

@@ -16,11 +16,15 @@
             var scheme = getParameterByName('scheme');
             if (scheme) {
                 window.location.href = scheme;
+                // 尝试在短暂延时后关闭页面，给予页面跳转一点时间
+                setTimeout(function() {
+                    window.close(); // 尝试关闭当前窗口
+                }, 1000); // 延时1000毫秒（1秒），你可以根据需要调整这个时间
             }
         }
     </script>
 </head>
 <body>
-    <p>如果未自动打开应用，<a href="javascript:void(0);" onclick="window.location.href = getParameterByName('scheme')">请点击这里</a>.</p>
+    <p>如果未自动打开应用，<a href="javascript:void(0);" onclick="window.location.href = getParameterByName('scheme'); setTimeout(function() { window.close(); }, 1000);">请点击这里</a>.</p>
 </body>
 </html>
